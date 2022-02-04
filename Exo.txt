@@ -1,0 +1,123 @@
+﻿Exercice 2:
+Soit les données suivantes représentant des films de cinéma.
+
+
+{
+
+nom:"Goodfellas",
+annee:1990,
+realisateur:{nom:"Scorsese", prenom:"Martin"},
+acteurs:[
+{nom:"De Niro", prenom:"Robert"},
+{nom:"Liotta", prenom:"Ray"},
+{nom:"Pesci", prenom:"Joe"}
+]}
+
+
+
+{
+nom:"The Godfather",
+annee:1972,
+realisateur:{nom:"Coppola", prenom:"Francis Ford"},
+acteurs:
+[
+{nom:"Pacino", prenom:"Al"},
+{nom:"Brando", prenom:"Marlon"},
+{nom:"Duvall", prenom:"Robert"}
+]}
+
+
+
+{ nom:"Million Dollar Baby",
+realisateur:{nom:"Eastwood", prenom:"Clint"},
+acteurs:
+[
+{nom:"Swank", prenom:"Hilary"},
+{nom:"Eastwood", prenom:"Clint"}
+]}
+
+
+
+
+{nom:"Gran Torino",
+annee:2008,
+realisateur:{nom:"Eastwood", prenom:"Clint"},
+acteurs:
+[
+{nom:"Vang", prenom:"Bee"},
+{nom:"Eastwood", prenom:"Clint"}
+]}
+
+
+
+{
+nom:"Unforgiven",
+realisateur:{nom:"Eastwood", prenom:"Clint"},
+acteurs:
+[
+{nom:"Hackman", prenom:"Gene"},
+{nom:"Eastwood", prenom:"Clint"}
+]}
+
+
+{
+nom:"Mystic River",
+realisateur:{nom:"Eastwood", prenom:"Clint"},
+acteurs:
+[
+{nom:"Penn", prenom:"Sean"},
+{nom:"Bacon", prenom:"Kevin"}
+]}
+
+
+{
+nom:"Honkytonk Man",
+realisateur:{nom:"Eastwood", prenom:"Clint"},
+annee:1982,
+acteurs:
+[{
+nom:"Eastwood", prenom:"Kyle"},
+{nom:"Bloom", prenom:"Verna"}
+]}
+
+1- Créer une nouvelle base MongoDB et insérer les films donnés.
+
+2- Ecrire les requêtes MongoDB permettant de répondre aux questions suivante :
+
+a) Quels sont les films sortis en 1990 ?
+
+
+b) Quels sont les films sortis avant 2000 ?
+
+Indice : On utilisera l'objet {$lt:value} à la
+place de la valeur de l'attribut à tester ($lt pour lesser than).
+
+c) Quels sont les films réalisés par Clint Eastwood ? Indice : On utilisera un objet
+comme valeur.
+
+d) Quels sont les films réalisés par quelqu'un prénommé Clint ? Indice : Utiliser le
+navigateur de propriété des objets point : object.attribute.
+
+e) Quels sont les films réalisés par quelqu'un prénommé Clint avant 2000 ? Indice:
+Utiliser une liste de conditions attribut:valeur pour spécifier un AND (et logique) :
+db.col.find({"attribute1":"value1", "attribute2":"value2"})
+
+f) Quels sont les films dans lesquels joue Clint Eastwood ?
+
+g) Quels sont les films dans lesquels joue un Eastwood ? Indice :
+
+Vous pouvez utiliser le parser de tableau $elemMatch:{"key":"value"} à la place de la
+valeur.
+
+h) Quels sont les films qui contiennent le mot "man" dans le nom du film? Vous
+pouvez utiliser les expressions réguliéres "/xxx/i" (le i pour insensible à la casse, et
+xxx correspond au mot).
+Quels sont les films qui contiennent le mot "god" dans le nom du film et réalisé par
+"Coppola"?
+
+i) Quels sont les noms des films dans lesquels joue un Eastwood ? Indices : Pour gérer
+la projection, utiliser un second argument de la clause find():
+db.Cinema.find({document JSON de sélection }, {document JSON de projection})
+avec document JSON de projection de la forme : {"attribut1":1, "attribut2":1...}
+Les identifiants sont toujours affichés par défaut, si on veut les supprimer, on peut
+ajouter la clause _id:0 dans le document de projection.
